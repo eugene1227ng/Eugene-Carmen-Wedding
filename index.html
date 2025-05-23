@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eugene & Carmen Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #fffaf8;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+      background-color: #fff0f0;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #b85c5c;
+    }
+    header p {
+      font-size: 1.2em;
+      color: #555;
+    }
+    .section {
+      padding: 20px;
+      text-align: center;
+    }
+    .countdown {
+      font-size: 1.8em;
+      margin-top: 10px;
+      color: #a85555;
+    }
+    .love-symbol {
+      font-size: 3em;
+      animation: pulse 1.5s infinite;
+      margin-top: 10px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .photo img {
+      max-width: 95%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .button {
+      display: inline-block;
+      margin: 10px 8px;
+      padding: 12px 18px;
+      font-size: 1em;
+      color: white;
+      background-color: #b85c5c;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .timeline {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eugene & Carmen</h1>
+    <p>October 5, 2025 | Marco Polo Chinese Cuisine KL</p>
+    <div class="countdown" id="countdown"></div>
+    <div class="love-symbol" id="love-symbol">❤️</div>
+  </header>
+
+  <div class="section">
+    <div class="photo">
+      <img src="main.jpg" alt="Eugene and Carmen">
+    </div>
+  </div>
+
+  <div class="section">
+    <a href="https://forms.gle/FL5QaxNAhRuAXeEe8" class="button" target="_blank">RSVP Now</a>
+    <a href="https://maps.app.goo.gl/DzbckWhKwWsbyVJc6" class="button" target="_blank">Google Maps</a>
+    <a href="https://waze.com/ul/hw283fmw31" class="button" target="_blank">Waze Directions</a>
+  </div>
+
+  <div class="section timeline">
+    <h2>Our Love Story</h2>
+    <p><strong>26-06-2016</strong>: Together 💑</p>
+    <p><strong>26-06-2024</strong>: Proposal 💍</p>
+    <p><strong>06-03-2025</strong>: Register 💒</p>
+  </div>
+
+  <audio autoplay loop>
+    <source src="love_story.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const loveSymbolEl = document.getElementById("love-symbol");
+    const weddingDate = new Date("2025-10-05T18:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "We're Married! 🎉";
+        loveSymbolEl.textContent = "💞";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
